@@ -1,73 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="bg-gray-100 p-6 font-sans">
     <div class="max-w-7xl mx-auto">
-        <header
-      class="flex justify-between items-center bg-white p-6 rounded-lg shadow-lg w-full ">
-      <div class="flex">
-        <img class="h-10 mx-2" src="./assets/logo.png" alt="">
-        <h1 class="text-2xl  flex items-center"><span class="text-black-100">Dev</span><span
-            class="text-black-600 font-bold">Board</span></h1>
-      </div>
-      <div class="flex items-center space-x-4">
-        <a href="./index.html">
-            <button class="bg-blue-600 text-white px-6 py-2 rounded-lg w-full text-center font-medium hover:bg-blue-700">Back To Desk</button>
-        </a>
-      </div>
-    </header>
-    <div class="max-w-7xl mx-auto bg-white shadow-md rounded-lg p-6 mt-4">
-        <h1 class="text-center text-2xl font-bold mb-4">Blogs</h1>
+        <header class="flex justify-between items-center bg-white p-6 rounded-lg shadow-lg w-full ">
+            <div class="flex">
+                <img class="h-10 mx-2" src="./assets/logo.png" alt="">
+                <h1 class="text-2xl  flex items-center"><span class="text-black-100">Dev</span><span
+                        class="text-black-600 font-bold">Board</span></h1>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="./index.html">
+                    <button
+                        class="bg-blue-600 text-white px-6 py-2 rounded-lg w-full text-center font-medium hover:bg-blue-700">Back
+                        To Desk</button>
+                </a>
+            </div>
+        </header>
+        <div class="max-w-7xl mx-auto bg-white shadow-md rounded-lg p-6 mt-4">
+            <h1 class="text-center text-2xl font-bold mb-4">Blogs</h1>
 
-        <div class="border rounded-lg p-4 mb-4 shadow-sm">
-            <h2 class="font-semibold text-lg">
-                Question-1: What are the different ways to select an element in the DOM?
-            </h2>
-            <p class="text-gray-600 mt-2">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora tenetur illum illo hic, ipsum officia obcaecati culpa vel pariatur repellendus quibusdam.
-            </p>
+            <div class="border rounded-lg p-4 mb-4 shadow-sm">
+                <h2 class="font-semibold text-lg">
+                    Question-1: What are the different ways to select an element in the DOM?
+                </h2>
+                <p class="text-gray-600 mt-2">
+                    The different ways to select an element in the DOM is
+                    'getElementById','getElementsByClassName','getElementsByTagName','getElementsByName','querySelector','querySelectorAll'.
+                </p>
+            </div>
+
+            <div class="border rounded-lg p-4 shadow-sm">
+                <h2 class="font-semibold text-lg">
+                    Question-2: What is the difference between innerHTML, innerText, and textContent?
+                </h2>
+                <p class="text-gray-600 mt-2">
+                    innerHTML, innerText, and textContent are used to get or set the content of an element, but they
+                    have important differences:
+                    <br>1.'innerHTML' gets or sets HTML markup,
+                    <br>2.'innerText' gets or sets visible text (affected by CSS),
+                    <br>3.'textContent' gets or sets all text (ignores styling, includes hidden text).
+                </p>
+            </div>
+            <div class="border rounded-lg p-4 shadow-sm">
+                <h2 class="font-semibold text-lg">
+                    Question-3: What is event delegation in the DOM?
+                </h2>
+                <p class="text-gray-600 mt-2">
+                    Event delegation means adding one event listener to a parent element to handle events from its child
+                    elements, instead of adding listeners to each child.
+                </p>
+            </div>
+            <div class="border rounded-lg p-4 shadow-sm">
+                <h2 class="font-semibold text-lg">
+                    Question-4: What is event bubbling in the DOM?
+                </h2>
+                <p class="text-gray-600 mt-2">
+                    Event bubbling means when an event happens on a child element, it automatically moves up to its
+                    parent elements one by one.
+                </p>
+            </div>
+            <div class="border rounded-lg p-4 shadow-sm">
+                <h2 class="font-semibold text-lg">
+                    Question-5: How do you create, add, and remove elements using JavaScript?
+                </h2>
+                <p class="text-gray-600 mt-2">
+                    In JavaScript, We can create a new HTML element using document.createElement("tagName"), then set
+                    its content or attributes (like textContent, className, or id). To add it to the page, we use
+                    methods like appendChild(), append(), or prepend() to insert it into a parent element. <br> Once added,
+                    if we want to remove it later,we can use element.remove() or
+                    parent.removeChild(element) . This allows to dynamically build, modify, or clean up
+                    parts of a webpage using JavaScript.
+                </p>
+            </div>
         </div>
 
-        <div class="border rounded-lg p-4 shadow-sm">
-            <h2 class="font-semibold text-lg">
-                Question-2: What is the difference between innerHTML, innerText, and textContent?
-            </h2>
-            <p class="text-gray-600 mt-2">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora tenetur illum illo hic, ipsum officia obcaecati culpa vel pariatur repellendus quibusdam.
-            </p>
-        </div>
-        <div class="border rounded-lg p-4 shadow-sm">
-            <h2 class="font-semibold text-lg">
-                Question-3: What is event delegation in the DOM?
-            </h2>
-            <p class="text-gray-600 mt-2">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora tenetur illum illo hic, ipsum officia obcaecati culpa vel pariatur repellendus quibusdam.
-            </p>
-        </div>
-        <div class="border rounded-lg p-4 shadow-sm">
-            <h2 class="font-semibold text-lg">
-                Question-4: What is event bubbling in the DOM?
-            </h2>
-            <p class="text-gray-600 mt-2">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora tenetur illum illo hic, ipsum officia obcaecati culpa vel pariatur repellendus quibusdam.
-            </p>
-        </div>
-        <div class="border rounded-lg p-4 shadow-sm">
-            <h2 class="font-semibold text-lg">
-                Question-5: How do you create, add, and remove elements using JavaScript?
-            </h2>
-            <p class="text-gray-600 mt-2">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora tenetur illum illo hic, ipsum officia obcaecati culpa vel pariatur repellendus quibusdam.
-            </p>
-        </div>
     </div>
 
-    </div>
-    
 </body>
+
 </html>

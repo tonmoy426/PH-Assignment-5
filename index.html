@@ -14,6 +14,8 @@
       const completedCounter = document.getElementById("completed-count");
       const activityLog = document.getElementById("activity-log");
       const themeButton = document.getElementById("theme-btn");
+      const liveDate = document.getElementById("live-date");
+      const clearHistoryButton = document.getElementById("clear-history-btn");
 
       const buttons = document.getElementsByClassName("complete-btn");
       for (let i = 0; i < buttons.length; i++) {
@@ -46,11 +48,25 @@
         const randomColor = `hsl(${Math.floor(Math.random() * 360)}, 80%, 85%)`;
         document.body.style.backgroundColor = randomColor;
       });
+      if (liveDate) {
+        function updateLiveDate() {
+          const now = new Date();
+          const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+          liveDate.textContent = now.toLocaleDateString(undefined, options);
+        }
+        updateLiveDate();
+        setInterval(updateLiveDate, 1000);
+      }
+      if (clearHistoryButton && activityLog) {
+        clearHistoryButton.addEventListener("click", function () {
+          activityLog.innerHTML = "";
+        });
+      }
     });
   </script>
 </head>
 
-<body class="bg-gray-100 p-6 font-sans">
+<body class="bg-gray-100 p-6">
   <div class="max-w-7xl mx-auto relative">
     <header
       class="flex justify-between items-center bg-white p-6 rounded-lg shadow-lg w-full absolute top-0 left-0 right-0">
@@ -81,8 +97,8 @@
               <h2 class="text-xl font-semibold">Discover Something <br>New Today!</h2>
             </a>
             <div class="col-span-2 flex flex-col items-center bg-gray-200 p-4 rounded-lg">
-              <span class="text-sm font-medium text-gray-600">Wed,</span>
-              <span class="text-lg font-bold text-gray-900">Jul 28 2025</span>
+              <img src="./assets/calender.png" alt="">
+              <span id="live-date" class="text-sm font-semibold text-gray-900"></span>
             </div>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4 px-2 py-6">
@@ -135,7 +151,7 @@
             <!-- Task Card 4 -->
             <div class="bg-gray-200 shadow-lg rounded-2xl p-4 w-72">
               <div class="text-sm bg-white text-gray-700 px-2 py-1 rounded-lg w-fit">Meta</div>
-              <h2 class="text-lg font-semibold mt-2">Add new emoji ✋</h2>
+              <h2 class="text-lg font-semibold mt-2">Add new emoji</h2>
               <div class="text-sm bg-white text-gray-700 px-2 py-1 rounded-lg w-fit mt-1">Debug using Chrome
                 DevTools,
                 check for overlappi...</div>
@@ -145,7 +161,7 @@
                   21 March 2025
                 </div>
                 <button class="bg-blue-600 text-white text-sm px-4 py-1 rounded-lg complete-btn"
-                  data-task="Add new emoji ✋">Complete</button>
+                  data-task="Add new emoji">Complete</button>
               </div>
             </div>
             <!-- Task Card 5 -->
@@ -195,13 +211,13 @@
         </div>
 
         <!-- Clear History Button -->
-        <a href="./index.html">
-          <button class="bg-blue-600 text-white px-6 py-2 rounded-lg w-full text-center font-medium hover:bg-blue-700">
+        <div>
+          <button id="clear-history-btn" class="bg-blue-600 text-white px-6 py-2 rounded-lg w-full text-center font-medium hover:bg-blue-700">
             Clear History
           </button>
-        </a>
+        </div>
 
-        <!-- Log Entries -->
+        <!-- completing message -->
         <div id="activity-log" class=" mt-4 p-3 overflow-auto space-y-3">
 
         </div>
