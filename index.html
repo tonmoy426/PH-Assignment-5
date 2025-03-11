@@ -6,6 +6,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DevBoard</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      let taskAssigned = 6;
+      let completedTasks = 23;
+      const taskCounter = document.getElementById("task-count");
+      const completedCounter = document.getElementById("completed-count");
+      const activityLog = document.getElementById("activity-log");
+      const themeButton = document.getElementById("theme-btn");
+
+      const buttons = document.getElementsByClassName("complete-btn");
+      for (let i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener("click", function () {
+          if (taskAssigned > 0) {
+            taskAssigned--;
+            completedTasks++;
+            taskCounter.textContent = taskAssigned;
+            completedCounter.textContent = completedTasks;
+
+            alert("Task added");
+
+            const logEntry = document.createElement("p");
+            logEntry.className = "bg-gray-200 p-3 rounded-lg text-gray-700 text-sm shadow";
+            logEntry.innerHTML = `You have completed the task <strong>${this.dataset.task}</strong> at ${new Date().toLocaleTimeString()}`;
+            activityLog.prepend(logEntry);
+
+            this.classList.remove("bg-blue-600");
+            this.classList.add("bg-gray-600");
+            this.textContent = "Completed";
+            this.disabled = true;
+
+            if (taskAssigned === 0) {
+              alert("Successfully added all tasks");
+            }
+          }
+        });
+      }
+      themeButton.addEventListener("click", function () {
+        const randomColor = `hsl(${Math.floor(Math.random() * 360)}, 80%, 85%)`;
+        document.body.style.backgroundColor = randomColor;
+      });
+    });
+  </script>
 </head>
 
 <body class="bg-gray-100 p-6 font-sans">
@@ -20,9 +62,9 @@
       <div class="flex items-center space-x-4">
         <span class="text-lg bg-gray-200 px-3 py-1 rounded-full flex items-center space-x-2">
           <img src="./assets/checkbox.png" alt="Checkbox" class="w-5 h-5">
-          <p>23</p>
+          <p id="completed-count">23</p>
         </span>
-        <div class="w-8 h-8 rounded-full"> <img src="./assets/theme-btn.png" alt=""></div>
+        <div id="theme-btn" class="w-8 h-8 rounded-full"> <img src="./assets/theme-btn.png" alt=""></div>
       </div>
     </header>
     <div class="flex pt-28">
@@ -31,13 +73,13 @@
           <div class="grid grid-cols-8 gap-4 items-center">
             <div class="col-span-2 flex flex-col items-center bg-gray-200 p-4 rounded-lg">
               <span class="text-sm font-medium text-gray-600">Task Assigned</span>
-              <span class="text-2xl font-bold text-gray-900">05</span>
+              <span id="task-count" class="text-2xl font-bold text-gray-900">06</span>
             </div>
-            <div
-              class="col-span-4 bg-gradient-to-r from-blue-700 to-blue-400 text-white p-6 h-24 rounded-lg flex items-center justify-center w-full">
-              <img src="calendar-icon.png" alt="Calendar Icon" class="w-6 h-6 mr-2">
-              <h2 class="text-lg font-semibold">Discover Something New Today!</h2>
-            </div>
+            <a class="col-span-4 bg-gradient-to-r from-blue-700 to-blue-400 text-white p-6 h-24 rounded-lg flex items-center justify-center w-full"
+              href="./blog.html">
+              <img src="./assets/board.png" alt="Calendar Icon" class="">
+              <h2 class="text-xl font-semibold">Discover Something <br>New Today!</h2>
+            </a>
             <div class="col-span-2 flex flex-col items-center bg-gray-200 p-4 rounded-lg">
               <span class="text-sm font-medium text-gray-600">Wed,</span>
               <span class="text-lg font-bold text-gray-900">Jul 28 2025</span>
@@ -55,7 +97,8 @@
                   <span class="font-semibold text-black">Deadline</span><br>
                   21 March 2025
                 </div>
-                <button class="bg-blue-600 text-white text-sm px-4 py-1 rounded-lg">Completed</button>
+                <button class="bg-blue-600 text-white text-sm px-4 py-1 rounded-lg complete-btn"
+                  data-task="Fix Mobile Button Issue">Complete</button>
               </div>
             </div>
             <!-- Task Card 2 -->
@@ -69,7 +112,8 @@
                   <span class="font-semibold text-black">Deadline</span><br>
                   21 March 2025
                 </div>
-                <button class="bg-blue-600 text-white text-sm px-4 py-1 rounded-lg">Completed</button>
+                <button class="bg-blue-600 text-white text-sm px-4 py-1 rounded-lg complete-btn"
+                  data-task="Add Dark Mode">Complete</button>
               </div>
             </div>
             <!-- Task Card 3 -->
@@ -84,7 +128,8 @@
                   <span class="font-semibold text-black">Deadline</span><br>
                   21 March 2025
                 </div>
-                <button class="bg-blue-600 text-white text-sm px-4 py-1 rounded-lg">Completed</button>
+                <button class="bg-blue-600 text-white text-sm px-4 py-1 rounded-lg complete-btn"
+                  data-task="Optimize Home page">Complete</button>
               </div>
             </div>
             <!-- Task Card 4 -->
@@ -99,7 +144,8 @@
                   <span class="font-semibold text-black">Deadline</span><br>
                   21 March 2025
                 </div>
-                <button class="bg-blue-600 text-white text-sm px-4 py-1 rounded-lg">Completed</button>
+                <button class="bg-blue-600 text-white text-sm px-4 py-1 rounded-lg complete-btn"
+                  data-task="Add new emoji ✋">Complete</button>
               </div>
             </div>
             <!-- Task Card 5 -->
@@ -114,7 +160,8 @@
                   <span class="font-semibold text-black">Deadline</span><br>
                   21 March 2025
                 </div>
-                <button class="bg-blue-600 text-white text-sm px-4 py-1 rounded-lg">Completed</button>
+                <button class="bg-blue-600 text-white text-sm px-4 py-1 rounded-lg complete-btn"
+                  data-task="Integrate OpenAI API">Complete</button>
               </div>
             </div>
             <!-- Task Card 6 -->
@@ -129,7 +176,8 @@
                   <span class="font-semibold text-black">Deadline</span><br>
                   21 March 2025
                 </div>
-                <button class="bg-blue-600 text-white text-sm px-4 py-1 rounded-lg">Completed</button>
+                <button class="bg-blue-600 text-white text-sm px-4 py-1 rounded-lg complete-btn"
+                  data-task="Improve Job searching">Complete</button>
               </div>
             </div>
           </div>
@@ -140,36 +188,22 @@
 
         <!-- Activity Log Header -->
         <div class="flex items-center justify-center mb-4">
-          <h2 class="text-lg font-semibold flex items-center space-x-2">
+          <img src="./assets/activity.png" alt="">
+          <h2 class="text-lg font-semibold flex items-center space-x-2 px-2">
             Activity Log
           </h2>
         </div>
 
         <!-- Clear History Button -->
-        <button class="bg-blue-600 text-white px-6 py-2 rounded-lg w-full text-center font-medium hover:bg-blue-700">
-          Clear History
-        </button>
+        <a href="./index.html">
+          <button class="bg-blue-600 text-white px-6 py-2 rounded-lg w-full text-center font-medium hover:bg-blue-700">
+            Clear History
+          </button>
+        </a>
 
         <!-- Log Entries -->
-        <div class=" mt-4 p-3 overflow-auto space-y-3">
-          <p class="bg-gray-200 p-3 rounded-lg text-gray-700 text-sm shadow">
-            You have completed the task <strong>Add Dark Mode</strong> at 12:48:15 PM
-          </p>
-          <p class="bg-gray-200 p-3 rounded-lg text-gray-700 text-sm shadow">
-            You have completed the task <strong>Add Dark Mode</strong> at 12:48:15 PM
-          </p>
-          <p class="bg-gray-200 p-3 rounded-lg text-gray-700 text-sm shadow">
-            You have completed the task <strong>Add Dark Mode</strong> at 12:48:15 PM
-          </p>
-          <p class="bg-gray-200 p-3 rounded-lg text-gray-700 text-sm shadow">
-            You have completed the task <strong>Add Dark Mode</strong> at 12:48:15 PM
-          </p>
-          <p class="bg-gray-200 p-3 rounded-lg text-gray-700 text-sm shadow">
-            You have completed the task <strong>Add Dark Mode</strong> at 12:48:15 PM
-          </p>
-          <p class="bg-gray-200 p-3 rounded-lg text-gray-700 text-sm shadow">
-            You have completed the task <strong>Add Dark Mode</strong> at 12:48:15 PM
-          </p>
+        <div id="activity-log" class=" mt-4 p-3 overflow-auto space-y-3">
+
         </div>
       </div>
     </div>
